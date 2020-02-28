@@ -1,0 +1,53 @@
+---
+- name: Create a VM from a template
+  hosts: localhost
+  gather_facts: yes
+  connection: local
+  tasks:
+    - name: include vars
+      include_vars:
+        dir: group_vars
+
+    - name: New VM from the template
+      vmware_guest:
+        validate_certs: False
+        hostname: "{{ vcenter }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        esxi_hostname: "{{ esxhost }}"
+        datacenter: "{{ datacenter }}"
+        state: present
+        template: "{{ vmtemplate }}"
+        folder: /
+        name: "{{ item }}"
+        disk:
+          - size_gb: "{{ disk_size }}"
+            type: thin
+            datastore: "{{ datastore }}"
+        networks:
+        - name: DeskoverDomain
+          type: dhcp
+        wait_for_ip_address: yes
+        hardware:
+          memory_mb: "{{ vm_memory }}"
+          num_cpus: "{{ nr_vcpus }}"
+        customization:
+          hostname: "{{ item }}"
+          password: "{{ admin_pass }}" 
+          joindomain: DESKOVER.LOCAL
+          domainadmin: "{{ domain_user }}"
+          domainadminpassword: "{{ user_pass }}"
+        wait_for_customization: yes
+      with_items: "{{ serverlist }}"
+
+    - name: VM tagging
+      vmware_tag_manager:
+        validate_certs: False
+        hostname: "{{ vcenter }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        tag_names: "{{ tag }}"
+        object_name: "{{ item }}"
+        object_type: VirtualMachine
+        state: add
+      with_items: "{{ serverlist }}"

@@ -1,0 +1,14 @@
+---
+- name: Add domain user to local group
+  hosts: winvms
+  tasks:
+  - name: include vars
+    include_vars:
+      dir: group_vars
+
+  - name: Add a domain user to a local group
+    win_group_membership:
+      name: Administrators
+      members: "{{ item }}"
+      state: present
+    with_items: "{{ userlist }}"

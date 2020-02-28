@@ -1,0 +1,10 @@
+---
+- name: Running Powershell Scripts
+  hosts: win
+  tasks:
+  - name: Copy Powershell Scripts
+    win_get_url:
+      url: https://raw.githubusercontent.com/UiPath/Infrastructure/master/Setup/Prerequisites-UiPathOrchestrator.ps1
+      dest: C:\temp\runningscript.ps1
+  - name: Run remote PowerShell Script
+    win_command: powershell.exe -ExecutionPolicy ByPass -File C:/temp/runningscript.ps1

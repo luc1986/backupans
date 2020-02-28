@@ -1,0 +1,16 @@
+---
+- name: Creating a local user
+  hosts: win
+  tasks:
+  - name: include vars
+    include_vars:
+      dir: group_vars
+
+  - name: Ensure user is present
+    win_user:
+      name: "{{ item }}"
+      password: 1qazXSW@
+      state: present
+      groups:
+        - Users
+    with_items: "{{ userlist }}"

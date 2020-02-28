@@ -1,0 +1,8 @@
+---
+- name: Activate windows
+  hosts: win
+  tasks:
+  - name: Activate windows
+    win_shell: cscript slmgr.vbs /ipk CN2MJ-DKJ9F-KV3MC-4RB2P-9QCG4
+    args:
+      chdir: C:\Windows\System32\

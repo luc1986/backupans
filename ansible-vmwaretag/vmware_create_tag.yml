@@ -1,0 +1,22 @@
+---
+- name: Create a VM from a template
+  hosts: localhost
+  gather_facts: yes
+  connection: local
+  tasks:
+    - name: include vars
+      include_vars:
+        dir: group_vars
+
+    - name: VM tagging
+      vmware_tag_manager:
+        validate_certs: False
+        hostname: "{{ vcenter }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        tag_names: "{{ tag }}"
+        object_name: "{{ item }}"
+        object_type: VirtualMachine
+        state: add
+      with_items: "{{ serverlist }}"
+

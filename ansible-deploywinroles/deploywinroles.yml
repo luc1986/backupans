@@ -1,0 +1,13 @@
+---
+- name: Running Powershell Scripts
+  hosts: win
+  tasks:
+  - name: Install Win Roles
+    win_feature:
+      name: Remote-Desktop-Services
+      state: present
+    register: win_feature
+
+  - name: Reboot if installing RDS feature requires it
+    win_reboot:
+    when: win_feature.reboot_required

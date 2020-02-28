@@ -1,0 +1,41 @@
+---
+serverlist:
+ - dc.deskover.local
+ - deskover_ipaddress_mngmt
+ - deskover_leaf01
+ - deskover_leaf02
+ - ROINFRAWDDC02
+ - robucupthdns02
+ - ROQADOMINO02
+ - ROQAW16LOTUS01
+ - deploy.uipath.local
+ - followmeprinter
+ - inventory.uipath.local
+ - MEDIAGROUNDFL
+ - mollify_ftp
+ - revisal.uipath.local
+ - ROINFRALM02
+ - ROINFRALM03
+ - ROINFRAU18IPAM
+ - Saga
+ - FCNFVE2
+ - FCSFVE
+ - SMCVE2
+ - dc01.uipath.local
+ - dc02.uipath.local
+ - observium.corp.uipath.com
+ - proxy_qa_nu stergea
+ - RO-BUC-FortiFWD
+ - RO-BUC-FortiFWD2
+ - ROINFAWBACK01
+ - roinfralinc7ans
+ - roinfralinc7awx
+ - ROINFRALM01 
+ - ROINFRAW16M01
+ - ROINFRAWSQL01
+ - ROINFRAWVCE01
+ - smokepingmaster
+ - smokepingslave1
+ - smokepingslave2
+ - robucelkc7
+ - roinfraubmangt

@@ -1,0 +1,8 @@
+
+[winvms]
+ROQAW2K12SQL01.deskover.local
+[winvms:vars]
+ansible_user=Administrator
+ansible_password=1qazXSW@
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore

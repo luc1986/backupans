@@ -1,0 +1,21 @@
+---
+- name: Create a VM from a template
+  hosts: localhost
+  gather_facts: yes
+  connection: local
+  tasks:
+    - name: include vars
+      include_vars:
+        dir: group_vars
+
+    - name: New VM from the template
+      vmware_guest:
+        validate_certs: False
+        hostname: "{{ vcenter }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        esxi_hostname: "{{ esxhost }}"
+        datacenter: "{{ datacenter }}"
+        state: poweredon
+        name: robucelkc7 
+      delegate_to: localhost

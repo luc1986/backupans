@@ -1,0 +1,8 @@
+[ad]
+10.10.16.2
+
+[ad:vars]
+ansible_user=lucian.preoteasa
+ansible_password=Cldc-1.2
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
